@@ -17,3 +17,25 @@
     box-shadow: inset -6px -4px 33px 22px rgba(0,0,0,0.24);
 
 }
+
+/* CSS for navbar */
+.navbar-dropdown {
+    display: none;
+  }
+  
+  @media (min-width: 1024px) {
+    .navbar-item.has-dropdown.is-hoverable:hover .navbar-dropdown {
+      display: block;
+    }
+  
+    .navbar-item.has-dropdown.is-active .navbar-dropdown {
+      display: block;
+    }
+  }
+  
+  @media (max-width: 1023px) {
+    .navbar-item.has-dropdown .navbar-dropdown {
+      display: block;
+    }
+  }
+  
