@@ -22,8 +22,11 @@ from .views import *
 
 urlpatterns = [
 
-    path('',profile),
-#
+    path('',       profile,  name='profile'),
+    path('login/', login,    name='sign'),
+    path('singup/',sigin,    name='login'),
+    path('loguot/',profile,  name='loguot'),
+ 
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

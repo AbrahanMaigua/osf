@@ -18,6 +18,9 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('',historial),
+    path('',gastos,           name='gastos'),
+    path('historial',historial,  name='history'),
+    path('metas/',metas,       name='metas'),
+
 #
 ]

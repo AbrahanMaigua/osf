@@ -18,6 +18,6 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('',categorias),
+    path('',categorias,  name='categorias'),
 #
 ]
