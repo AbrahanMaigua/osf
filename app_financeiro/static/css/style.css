@@ -1,0 +1,19 @@
+.gray{
+    background-color: gray;
+}
+
+.hero {
+    border-bottom-right-radius: 112px;
+    border-bottom-left-radius: 112px
+}
+
+.ct{
+    padding: 31px;
+}
+
+.shadow{
+    -webkit-box-shadow: inset -6px -4px 33px 22px rgba(0,0,0,0.24);
+    -moz-box-shadow: inset -6px -4px 33px 22px rgba(0,0,0,0.24);
+    box-shadow: inset -6px -4px 33px 22px rgba(0,0,0,0.24);
+
+}
