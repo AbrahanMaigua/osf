@@ -18,3 +18,5 @@
     python manage.py runserver
 
     ```
+
+### app django
