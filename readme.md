@@ -5,6 +5,8 @@
 1. create virtual enviroment
 
     ```"python -m venv env" ```
+    ```env\Scripts\activate.bat```
+
 
 2. isntall dependecias
 
