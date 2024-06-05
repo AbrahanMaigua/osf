@@ -23,7 +23,7 @@
 
 }
 /* CSS for categoria */
-.cell {
+.call {
   display: flex;
   justify-content: space-between;
   align-items: center; 
