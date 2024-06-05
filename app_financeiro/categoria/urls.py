@@ -19,5 +19,9 @@ from .views import *
 
 urlpatterns = [
     path('',categorias,  name='categorias'),
+    path('/<int:categoria_id>',detail,  name='categorias'),
+    path('subcategoria/<int:sub_id>/',subcategoria,  name='categorias'),
+    
+    
 #
 ]

@@ -10,6 +10,11 @@
 .ct{
     padding: 31px;
 }
+.ct-1{
+  padding: 1.5rem;
+
+
+}
 
 .shadow{
     -webkit-box-shadow: inset -6px -4px 33px 22px rgba(0,0,0,0.24);
@@ -17,7 +22,39 @@
     box-shadow: inset -6px -4px 33px 22px rgba(0,0,0,0.24);
 
 }
+/* CSS for categoria */
+.cell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  
 
+  
+}
+
+.bg-yelow{
+  background-color:#f5c00052;
+  padding:10px;
+  border-radius:10px;
+  -webkit-box-shadow: 10px 10px 0px -4px rgba(0,0,0,0.15);
+  -moz-box-shadow: 10px 10px 0px -4px rgba(0,0,0,0.15);
+  box-shadow: 10px 10px 0px -4px rgba(0,0,0,0.15);
+}
+
+.cell:hover{
+ 
+    transform: translatex(-7px);
+}
+
+.subcategoria-title {
+  flex: 1;
+  margin-right: 10px;
+}
+.end-text {
+  flex: 0 0 auto; /* No permite que el texto final se expanda */
+}
+
+.link { color: inherit !important; } 
 /* CSS for navbar */
 .navbar-dropdown {
     display: none;
