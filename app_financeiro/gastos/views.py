@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Transaccion
@@ -116,3 +117,14 @@ def eliminar_gasto_view(request, gasto_id):
         'gasto': gasto,
     }
     return render(request, 'confirmar_eliminar_gasto.html', context)
+=======
+from django.shortcuts import render
+
+# Create your views here.
+def historial(request):
+    return render(request, 'history.html')
+def gastos(request):
+    return render(request, 'gastos.html')
+def metas(request):
+    return render(request, 'metas.html')
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e

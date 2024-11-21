@@ -28,12 +28,17 @@
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" href="{% url 'home' %}">
+<<<<<<< HEAD
+=======
+          
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
           Home
         </a>
 
         <a class="navbar-item" href="{% url 'categorias' %}">
           categorias
         </a>
+<<<<<<< HEAD
         <a class="navbar-item" href="{% url 'listar_gastos'  %}">
           gastos
         </a>
@@ -57,13 +62,30 @@
                
             {% else %}
                 <a class="button is-primary" href="{% url 'signin'  %}">
+=======
+        <a class="navbar-item" href="{% url 'gastos'  %}">
+          gastos
+        </a>
+        <a class="navbar-item" href="{% url 'metas'  %}">
+          Metas
+        </a>
+
+        
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary" href="{% url 'sign'  %}">
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
               <strong>Sign up</strong>
             </a>
             <a class="button is-light" href="{% url 'login'  %}">
               Log in
             </a>
+<<<<<<< HEAD
             {% endif %}
             
+=======
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
           </div>
         </div>
       </div>
@@ -77,6 +99,9 @@
    <script src="{% static 'js/script.js' %}"></script>
    {% block js %}{% endblock %}
     
+<<<<<<< HEAD
 
+=======
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
 </body>
 </html>

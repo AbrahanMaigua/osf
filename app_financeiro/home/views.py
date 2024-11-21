@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from gastos.models import Transaccion
@@ -55,4 +56,16 @@ def home(request):
 
 def politica_privacidad(request):
     return render(request, 'politica_privacidad.html')
+=======
+from django.shortcuts import render
+
+# Create your views here.
+
+def home(request):
+   context = {}
+   return render(request, 'home.html', context)
+
+def seting(request):
+    pass
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
 

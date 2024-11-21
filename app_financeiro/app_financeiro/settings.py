@@ -12,16 +12,24 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+<<<<<<< HEAD
 import environ
 from cryptography.fernet import Fernet
 
 # Build paths inside the project like this: BASE_DIR  'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 print(os.path.join(BASE_DIR, '.env'))
+=======
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+<<<<<<< HEAD
 # Inicializar el entorno
 env = environ.Env()
 # Leer el archivo .env
@@ -39,6 +47,12 @@ except ValueError as e:
     print(f"Error al inicializar Fernet: {e}")
 # Configuración de depuración
 DEBUG = env.bool('DEBUG', default=False)  # Por defecto será False en producción
+=======
+SECRET_KEY = 'django-insecure-+6*p-j1n%5@5*)7f)h$$#q-s@^6(%af7$uk)u_jc$&+nd@jp)1'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
 
 ALLOWED_HOSTS = ['*']
 
@@ -51,18 +65,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
 #    'crispy_forms',
     'corsheaders',
     'rest_framework',
+=======
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
     'home',
     'categoria',
     'authp',
     'gastos',
+<<<<<<< HEAD
     'broker_sim',
     'metas',
     'api'
 
     
+=======
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
 ]
 
 MIDDLEWARE = [
@@ -73,6 +93,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+<<<<<<< HEAD
 
     'corsheaders.middleware.CorsMiddleware',
 
@@ -96,6 +117,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Reemplaza con el origen de tu frontend
     "http://127.0.0.1:3000",
+=======
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
 ]
 
 ROOT_URLCONF = 'app_financeiro.urls'
@@ -111,7 +134,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+<<<<<<< HEAD
                 'home.context_processors.user_settings'
+=======
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
             ],
         },
     },
@@ -133,7 +159,11 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
+<<<<<<< HEAD
 AUTH_USER_MODEL = 'authp.CustomUser'
+=======
+
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -172,7 +202,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     #
 ]
+<<<<<<< HEAD
 CRISPY_TEMPLATE_PACK = 'Bulma'
+=======
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

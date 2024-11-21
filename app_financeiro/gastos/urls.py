@@ -18,6 +18,7 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
+<<<<<<< HEAD
     path('',               gastos,     name='gastos'),
     path('historial',      historial,  name='history'),
     #path('metas/',         metas,      name='metas'),
@@ -27,3 +28,11 @@ urlpatterns = [
     path('editar/<int:transaccion_id>/', editar_transaccion, name='editar_transaccion'),
     path('detalles/<int:transaccion_id>/', ver_detalles_transaccion, name='ver_detalles_transaccion'),
 ]
+=======
+    path('',gastos,           name='gastos'),
+    path('historial',historial,  name='history'),
+    path('metas/',metas,       name='metas'),
+
+#
+]
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e

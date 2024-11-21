@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Create your models here.
 from django.db import models
 from django.contrib.auth.models import User
@@ -91,3 +92,8 @@ class MetaFinanciera(models.Model):
     def __str__(self):
         return f"Meta: {self.nombre} - Objetivo: {self.cantidad_objetivo}"
 
+=======
+from django.db import models
+
+# Create your models here.
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e

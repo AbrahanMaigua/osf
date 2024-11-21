@@ -2,6 +2,9 @@ asgiref==3.8.1
 Django==5.0.6
 sqlparse==0.5.0
 tzdata==2024.1
+<<<<<<< HEAD
 yfinance==5.3.0
 cryptography==43.0.3
 django-environ
+=======
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e

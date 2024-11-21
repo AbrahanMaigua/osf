@@ -2,6 +2,7 @@
 {% block title %}{{ section.title }}{% endblock %}
 
 {% block content %}
+<<<<<<< HEAD
   <div class="fixed-grid">
     <div class="container ct-1">
         <div>
@@ -86,4 +87,62 @@
   <script src="{% static 'js/fixcss.js' %}"></script>
   <link rel="stylesheet" href="{% static 'css/window.css' %}">
   <script src="{% static 'js/window.js' %}"></script>
+=======
+
+  {% for i in "0123456789"|make_list %}
+
+  <div class="fixed-grid">
+    <div class="container ct-1" >
+
+        <h2 class="is-size-3" >tu categoria</h2>
+        <hr>
+        <div class="grid">
+          <a class="link" href="#">
+            <div class="call bg-yelow is-info"><span class="subcategoria-title">lanches</span>  <span class="end-text"> 10</p> </span></div>
+          </a>
+          <a class="link" href="#">
+            <div class="call bg-yelow is-info"><span class="subcategoria-title">uber</span> <span class="end-text"> 10</p> </span></div>
+          </a>
+          <a class="link" href="#">
+            <div class="call bg-yelow is-info"><span class="subcategoria-title">paõ</span> <span class="end-text"> 10</p> </span></div>
+          </a>
+          <a class="link" href="#">          
+            <div class="call bg-yelow is-info"><span class="subcategoria-title">ropa</span> <span class="end-text"> 10</p> </span></div>
+          </a>
+          <a class="link" href="#">
+            <div class="call bg-yelow is-info"><span class="subcategoria-title">edit</span> <span class="end-text"> 20</p> </span></div>
+          </a>
+          <a class="link" href="#">
+            <div class="call bg-yelow is-info"><span class="subcategoria-title">Cell 6</span> <span class="end-text"> 10</p> </span></div>
+          </a>
+          <a class="link" href="#">
+            <div class="call bg-yelow is-info"><span class="subcategoria-title">Cell 7</span> <span class="end-text"> 10</p> </span></div>
+          </a>
+          <a class="link" href="#">
+            <div class="call bg-yelow is-info"><span class="subcategoria-title">Cell 8</span> <span class="end-text"> 10</p> </span></div>
+          </a>
+          <a class="link" href="#">
+            <div class="call bg-yelow is-info"><span class="subcategoria-title">Cell 9</span> <span class="end-text"> 10</p> </span></div>
+          </a>
+          <a class="link" href="#">
+            <div class="call bg-yelow is-info"><span class="subcategoria-title">Cell 10</span> <span class="end-text"> 10</p> </span></div>
+          </a>
+          <a class="link" href="#">
+            <div class="call bg-yelow is-info"><span class="subcategoria-title">Cell 11</span> <span class="end-text"> 10</p> </span></div>
+          </a>
+          <a class="link" href="#">
+            <div class="call bg-yelow is-info"><span class="subcategoria-title">Cell 12</span> <span class="end-text"> 10</p> </span></div>
+          </a>
+     
+        </div>
+      </div>
+    </div>
+  {% endfor %}  
+  {% block js %} 
+  {% load static %}
+
+  <script src="{% static 'js/fixcss.js' %}"></script>
+
+  {% endblock %}
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
 {% endblock %}

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login as auth_login
@@ -72,3 +73,14 @@ def login(request):
     
     context = {'title': 'Iniciar Sesión'}
     return render(request, 'login.html', context)
+=======
+from django.shortcuts import render
+
+# Create your views here.
+def profile(request):
+    return render(request, 'profile.html')
+def login(request):
+    return render(request, 'login.html')
+def sigin(request):
+    return render(request, 'sigin.html')
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e

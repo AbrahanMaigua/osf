@@ -22,10 +22,14 @@ from home.views import *
 
 urlpatterns = [
     path('',home, name='home'),
+<<<<<<< HEAD
     path('politica-privacidad/',politica_privacidad, name='politica_privacidad'),
 
 
 
+=======
+#
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

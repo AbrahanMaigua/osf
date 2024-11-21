@@ -19,15 +19,24 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import *
+<<<<<<< HEAD
 from django.contrib.auth import views as auth_views
+=======
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
 
 urlpatterns = [
 
     path('',       profile,  name='profile'),
+<<<<<<< HEAD
     path('login/', login,    name='login'),
     path('singup/',register,    name='signin'),
     path('loguot/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
 
+=======
+    path('login/', login,    name='sign'),
+    path('singup/',sigin,    name='login'),
+    path('loguot/',profile,  name='loguot'),
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
  
 ]
 

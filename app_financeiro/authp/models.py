@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from cryptography.fernet import Fernet
@@ -89,3 +90,8 @@ class RegistroDeActividades(models.Model):
 
     def __str__(self):
         return f"Actividad de {self.user.username} en {self.fecha}"
+=======
+from django.db import models
+
+# Create your models here.
+>>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
