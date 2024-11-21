@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.conf import settings
 from django.db import models
 
@@ -23,8 +22,3 @@ class SubCategoria(models.Model):
 
     def __str__(self):
         return f"{self.nombre}"  # Muestra la subcategoría y su categoría asociada
-=======
-from django.db import models
-
-# Create your models here.
->>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e

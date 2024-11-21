@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # views.py
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -160,16 +160,3 @@ def subcategoria(request, subcategoria_id: int):
     }
     
     return render(request, 'subcategoria.html', context)
-=======
-from django.shortcuts import render
-
-# Create your views here.
-def categorias(request):
-   return render(request, 'categorias.html', context={'title':'Categorias'})
-
-def detail(request, categoria_id:int):
-   return render(request, 'detail.html', context={'title':'Categorias'})
-
-def subcategoria(request, categoria_id:int):
-   return render(request, 'detail.html', context={'title':'Categorias'})
->>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e

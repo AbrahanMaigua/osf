@@ -1,5 +1,3 @@
-from django.contrib import admin
-<<<<<<< HEAD
 from django.contrib.auth.admin import UserAdmin
 from .models import CustomUser
 
@@ -32,7 +30,3 @@ class CustomUserAdmin(UserAdmin):
     list_filter = ('is_staff', 'is_superuser', 'tema_preferido', 'configuracion_privacidad')
 
 admin.site.register(CustomUser, CustomUserAdmin)
-=======
-
-# Register your models here.
->>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e

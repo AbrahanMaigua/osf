@@ -1,6 +1,6 @@
 # app finnaciera
 
-<<<<<<< HEAD
+
 Aquí tienes una descripción para una web app de finanzas con un modelo SaaS y las funcionalidades mencionadas:
 
 ---
@@ -40,8 +40,7 @@ Nuestra aplicación de finanzas está diseñada para facilitar la gestión de tu
 
 Este enfoque integral te permite gestionar tus finanzas personales de manera efectiva, manteniendo todo en un solo lugar y accesible en cualquier momento.
 
-=======
->>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
+
 ### run local
 
 1. create virtual enviroment

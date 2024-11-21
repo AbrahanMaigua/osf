@@ -19,18 +19,11 @@ from .views import *
 
 urlpatterns = [
     path('',categorias,  name='categorias'),
-<<<<<<< HEAD
     path('<int:categoria_id>/',detail,  name='categorias_detail'),
     path('subcategoria/<int:subcategoria_id>/',subcategoria,  name='subcategorias_detail'),
     path('crear_categoria/', crear_categoria, name='crear_categoria'),
     path('crear_subcategoria/', crear_subcategoria, name='crear_subcategoria'),
     # Otras rutas...
 
-=======
-    path('/<int:categoria_id>',detail,  name='categorias'),
-    path('subcategoria/<int:sub_id>/',subcategoria,  name='categorias'),
-    
-    
-#
->>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
+
 ]

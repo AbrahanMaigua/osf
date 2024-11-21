@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 .spacing-top{
     padding: 19px 11px;
     display: inline-flex;
@@ -9,8 +9,6 @@
 }
 
 
-=======
->>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
 .gray{
     background-color: gray;
 }
@@ -67,7 +65,6 @@
   flex: 0 0 auto; /* No permite que el texto final se expanda */
 }
 
-<<<<<<< HEAD
 
 .spacing {
   padding: 10px;
@@ -75,8 +72,6 @@
 
 .
 
-=======
->>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
 .link { color: inherit !important; } 
 /* CSS for navbar */
 .navbar-dropdown {
@@ -93,11 +88,7 @@
     }
   }
   
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 89e3e9720cb51446d3bbd46facb6e2aa4915fe0e
   @media (max-width: 1023px) {
     .navbar-item.has-dropdown .navbar-dropdown {
       display: block;
