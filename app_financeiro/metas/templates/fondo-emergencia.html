@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Fondo de Emergencia</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Calculadora de Fondo de Emergencia</h1>
+      <p class="subtitle">Calcula el fondo necesario para emergencias basado en tu costo de vida mensual.</p>
+
+      <!-- Formulario -->
+      <div class="box">
+        <div class="field">
+          <label class="label">Costo de Vida Mensual</label>
+          <div class="control has-icons-left">
+            <input id="costoVida" class="input" type="number" placeholder="Ingrese su costo mensual" min="0" step="0.01">
+            <span class="icon is-small is-left">
+              <i class="fas fa-dollar-sign"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Meses de Respaldo</label>
+          <div class="control">
+            <div class="select">
+              <select id="mesesRespaldo">
+                <option value="3">3 Meses</option>
+                <option value="6">6 Meses</option>
+                <option value="12">12 Meses</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resultado -->
+        <div id="resultado" class="notification is-info is-hidden">
+          <p>Fondo de Emergencia Necesario: $<span id="fondoResultado">0.00</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Función para calcular el fondo de emergencia en tiempo real
+    function calcularFondo() {
+      const costoVida = parseFloat(document.getElementById("costoVida").value) || 0;
+      const mesesRespaldo = parseInt(document.getElementById("mesesRespaldo").value);
+
+      const fondoDeEmergencia = costoVida * mesesRespaldo;
+      document.getElementById("fondoResultado").textContent = fondoDeEmergencia.toFixed(2);
+
+      // Muestra el resultado solo si el costo de vida es mayor a 0
+      if (costoVida > 0) {
+        document.getElementById("resultado").classList.remove("is-hidden");
+      } else {
+        document.getElementById("resultado").classList.add("is-hidden");
+      }
+    }
+
+    // Agregar eventos de cambio en tiempo real
+    document.getElementById("costoVida").addEventListener("input", calcularFondo);
+    document.getElementById("mesesRespaldo").addEventListener("change", calcularFondo);
+  </script>
+
+  <!-- FontAwesome para íconos -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

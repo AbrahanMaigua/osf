@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container " style="padding-top: 20px;">
+    <div style="margin: 20px;">
+        <h2 class="title has-text-centered">Detalles de la Transacción</h2>
+        <p><strong>Categoría:</strong> {{ transaccion.categoria }}</p>
+        <p><strong>Subcategoría:</strong> {{ transaccion.subcategoria }}</p>
+        <p><strong>Cantidad:</strong> {{ transaccion.cantidad }}</p>
+        <p><strong>Tipo:</strong> {{ transaccion.get_tipo_display }}</p>
+        <p><strong>Descripción:</strong> {{ transaccion.descripcion }}</p>
+        <p><strong>Fecha:</strong> {{ transaccion.fecha|date:"d/m/Y H:i:s" }}</p>
+        
+        <a href="{% url 'editar_transaccion' transaccion.id %}" class="button is-warning">Editar</a>
+        <a href="{% url 'listar_gastos' %}" class="button">Volver</a>
+    </div>
+</div>
+{% endblock %}

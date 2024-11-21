@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjetas de Balance</title>
+    <style>
+        /* Contenedor principal para las tarjetas */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Tarjeta individual */
+        .card {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+        }
+
+        /* Encabezado con el balance */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-header h4 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .card-header span {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Balance principal */
+        .balance {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2d89e5;
+            margin: 10px 0;
+        }
+
+        /* Contenedor para los detalles adicionales */
+        .card-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .card-details span {
+            font-size: 0.9em;
+            color: #666;
+        }
+        .round{
+        	  border: 1px solid black;
+			  padding: 4px 9px;
+			  border-radius: 10px;
+        }
+
+        /* Estilo para el porcentaje de incremento */
+        .increment {
+            display: flex;
+            border-radius: 20px;
+            padding: 7px 13px;
+     	    color: white !important;  /* Asegura que el texto sea blanco */
+            background-color: green;
+            width: 64px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <!-- Tarjeta 1 -->
+        <div class="card">
+            <div class="card-header">
+                <h4>Total Balance</h4>
+                <div class="round">
+                	<span>$USD</span>
+                </div>
+            </div>
+            <p class="balance">$1,220.00</p>
+            <div class="card-details">
+                <span class="increment">12.06%</span>
+                <span>50 categorías</span>
+                <span>Text</span>
+                <span>14 transacciones</span>
+            </div>
+        </div>
+
+        <!-- Tarjeta 2 -->
+        <div class="card">
+            <div class="card-header">
+                <h4>Total Balance</h4>
+                 <div class="round">
+                	<span>$USD</span>
+                </div>
+            </div>
+            <p class="balance">$3,500.00</p>
+            <div class="card-details">
+                <span class="increment">8.12%</span>
+                <span>60 categorías</span>
+                <span>Text</span>
+                <span>18 transacciones</span>
+            </div>
+        </div>
+
+        <!-- Tarjeta 3 -->
+        <div class="card">
+            <div class="card-header">
+                <h4>Total Balance</h4>
+                <div class="round">
+                	<span>$USD</span>
+                </div>
+            </div>
+            <p class="balance">$980.00</p>
+            <div class="card-details">
+                <span class="increment">6.54%</span>
+                <span>45 categorías</span>
+                <span>Text</span>
+                <span>10 transacciones</span>
+            </div>
+        </div>
+
+        <!-- Agrega más tarjetas si es necesario -->
+    </div>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gastos y Ahorros</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+
+    <style>
+        .card h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .card canvas {
+            margin-top: 10px;
+        }
+        /* Estilo para el contenedor principal de las tarjetas */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        /* Estilo para la tarjeta individual */
+        .card {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+        }
+        /* Encabezado con el balance */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+        }
+        .card-header h4 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .card-header span {
+            font-weight: bold;
+            color: #333;
+        }
+        /* Balance principal */
+        .balance {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2d89e5;
+            margin: 10px 0;
+        }
+        /* Contenedor para los detalles adicionales */
+        .card-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .card-details span {
+            font-size: 0.9em;
+            color: #666;
+        }
+        .round {
+            border: 1px solid black;
+            padding: 4px 9px;
+            border-radius: 10px;
+        }
+        /* Estilo para el porcentaje de incremento */
+        .increment {
+            color: green !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container ">
+        <div class="card-container">
+            <!-- Tarjeta 1 -->
+            <div class="card">
+                <div class="card-header">
+                    <h4>Total Balance</h4>
+                    <div class="round">
+                        <span>$USD</span>
+                    </div>
+                </div>
+                <p class="balance">$1,220.00</p>
+                <div class="card-details">
+                    <span class="increment">12.06%</span>
+                    <span>50 categorías</span>
+                    <span>Text</span>
+                    <span>14 transacciones</span>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="card">
+                <div class="card-header">
+                    <h4>Total Balance</h4>
+                    <div class="round">
+                        <span>$USD</span>
+                    </div>
+                </div>
+                <p class="balance">$3,500.00</p>
+                <div class="card-details">
+                    <span class="increment">8.12%</span>
+                    <span>60 categorías</span>
+                    <span>Text</span>
+                    <span>18 transacciones</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <!-- Card para gastos -->
+            <div class="card">
+                <h3>Gastos por Categoría</h3>
+                <canvas id="gastosChart" width="200" height="200"></canvas>
+            </div>
+            
+            <!-- Card para ahorros -->
+            <div class="card">
+                <h3>Ahorros</h3>
+                <canvas id="ahorrosChart" width="200" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos de los gastos por categoría
+        const gastosData = {
+            labels: ["Alimentos", "Transporte", "Entretenimiento", "Otros"],
+            datasets: [{
+                data: [3500, 1400, 980, 750],
+                backgroundColor: [
+                    "rgba(255, 99, 132, 0.7)",
+                    "rgba(54, 162, 235, 0.7)",
+                    "rgba(255, 206, 86, 0.7)",
+                    "rgba(75, 192, 192, 0.7)"
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        // Datos de ahorros
+        const ahorrosData = {
+            labels: ["Ahorros"],
+            datasets: [{
+                data: [4200],
+                backgroundColor: ["rgba(153, 102, 255, 0.7)"],
+                hoverOffset: 4
+            }]
+        };
+
+        // Configuración del gráfico de gastos (dona)
+        const gastosConfig = {
+            type: 'doughnut',
+            data: gastosData,
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Distribución de Gastos'
+                    }
+                }
+            }
+        };
+
+        // Configuración del gráfico de ahorros (pastel)
+        const ahorrosConfig = {
+            type: 'pie',
+            data: ahorrosData,
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Total Ahorros'
+                    }
+                }
+            }
+        };
+
+        // Crear los gráficos
+        const gastosChart = new Chart(
+            document.getElementById('gastosChart'),
+            gastosConfig
+        );
+
+        const ahorrosChart = new Chart(
+            document.getElementById('ahorrosChart'),
+            ahorrosConfig
+        );
+    </script>
+</body>
+</html>

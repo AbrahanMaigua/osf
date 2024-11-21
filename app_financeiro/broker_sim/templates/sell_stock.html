@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}{{ section.title }}{% endblock %}
+
+
+{% block content %}
+<h2>Buy Stock</h2>
+<form method="POST">
+    {% csrf_token %}
+    Ticker: <input type="text" name="ticker" required>
+    Shares: <input type="number" name="shares" required>
+    <button type="submit">Buy</button>
+</form>
+{% endblock %}

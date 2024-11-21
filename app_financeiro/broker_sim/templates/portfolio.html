@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{ section.title }}{% endblock %}
+
+{% block content %}
+<h2>Your Portfolio</h2>
+<p>Balance: {{ portfolio.balance }}</p>
+<h3>Transactions:</h3>
+<ul>
+    {% for transaction in transactions %}
+        <li>{{ transaction.transaction_type|capfirst }} {{ transaction.shares }} shares of {{ transaction.ticker }} at {{ transaction.price_per_share }} each on {{ transaction.timestamp }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'buy_stock' %}">Buy Stock</a> |
+<a href="{% url 'sell_stock' %}">Sell Stock</a>
+
+{% endblock %}

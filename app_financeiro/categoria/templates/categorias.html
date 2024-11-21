@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}{{ section.title }}{% endblock %}
+
+{% block content %}
+  <div class="fixed-grid">
+    <div class="container ct-1">
+        <div>
+            <!-- Botones para abrir los modales -->
+            <button id="loginBtn" class="button" type="button">Añadir categoría</button>
+            <button id="signupBtn" class="button" type="button">Añadir Subcategoría</button>
+        </div>
+      
+         {% for categoria in categorias %}
+        <div class="">
+          <a href="{% url 'categorias_detail' categoria.id %}">
+              <h2 class="subtitle has-text-link " style="padding-top: 20px" >{{ categoria.nombre }}</h2>
+            
+          </a>
+
+          <!-- Bucle para mostrar las subcategorías de cada categoría -->
+          {% for subcategoria in categoria.subcategorias.all %}
+            <div class="grid">
+                <div class="call bg-yellow is-info"><span class="subcategoria-title">{{ subcategoria.nombre }}</span> <span class="end-text"></span></div>
+              
+              <!-- Repite esto para más celdas si es necesario -->
+            </div>
+            {% empty %}
+              <p>no hay sub categoria</p>
+            {% endfor %}
+            </div>
+          {% endfor %}
+
+        
+        
+      </div>
+    </div>
+  
+
+
+    <!-- Modal de Iniciar Sesión -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="loginModal">&times;</span>
+            <h2>Crear una categoría</h2>
+          <form action="{% url 'categorias' %}" method="POST" id="modalFormCategoria">
+              {% csrf_token %}
+              {{ categoria_form.nombre }}
+              {{ categoria_form.tipo }}
+
+              <div class="centered-div has-text-centered is-flex is-justify-content-center is-align-items-center">
+                 <button type="submit" name="categoria_submit" class="button">Crear Categoría</button>
+              </div>
+
+        </form>
+        </div>
+    </div>
+
+    <!-- Modal de Crear Cuenta -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="signupModal">&times;</span>
+            <h2>Crear una subcategoría</h2>
+            <form action="{% url 'categorias' %}" method="POST" id="modalFormSubcategoria">
+
+              {% csrf_token %}
+              {{ subcategoria_form.nombre }}
+              {{ subcategoria_form.categoria }}
+              <div class="centered-div has-text-centered is-flex is-justify-content-center is-align-items-center">
+
+
+                 <button type="submit" name="subcategoria_submit" class="button">Crear Subcategoría</button>
+                
+              </div>
+
+            </form>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+{% block js %}
+  {% load static %}
+  <script src="{% static 'js/fixcss.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/window.css' %}">
+  <script src="{% static 'js/window.js' %}"></script>
+{% endblock %}

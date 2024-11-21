@@ -1,0 +1,15 @@
+<!-- crear_categoria.html -->
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="title">{{ title }}</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ subcategoria_form.as_p }}
+            <div class="has-text-centered" >
+                <button type="submit" class="button is-primary">Guardar Categoría</button>  
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Finanzas Personales</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .hero {
+            background-color: #00d1b2;
+            color: white;
+            padding: 2rem;
+        }
+        .balance-card {
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .chart-container {
+            margin: 2rem 0;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            width: 524px;
+             height: 445px;
+        }
+        .tooltip {
+            position: absolute;
+            padding: 8px;
+            background: #363636;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .progress {
+            background-color: #00d1b2;
+        }
+        .alert {
+            color: #ff3860;
+        }
+        .transaction-table th, .transaction-table td {
+            text-align: center;
+        }
+         .chart-container {
+        
+        canvas {
+            max-width: 100%; /* Asegura que el canvas se ajuste al contenedor */
+            height: auto; /* Mantiene la relación de aspecto */
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">Gestión de Finanzas Personales</h1>
+            <h2 class="subtitle">Organiza y mejora tus finanzas</h2>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <!-- Resumen de ingresos y gastos -->
+        <div class="columns">
+            <div class="column is-half">
+                <div class="balance-card">
+                    <h3 class="title is-4">Total Ingresos</h3>
+                    <p class="title is-3">$5,000</p>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div class="balance-card">
+                    <h3 class="title is-4">Total Gastos</h3>
+                    <p class="title is-3 alert">$3,500</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="column is-6">
+                <!-- Gráfico de categorías de gasto -->
+                <div class="chart-container">
+                    <h4 class="title is-4">Distribución de Gastos e Ingresos</h4>
+                    <canvas id="gastosChart"></canvas>
+                </div>
+            </div>
+            <div class="column is-6">
+                <!-- Gráfico de gastos por mes -->
+                <div class="chart-container">
+                    <h4 class="title is-4">Gastos Mensuales</h4>
+                    <canvas id="gastosMensualesChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Metas de ahorro -->
+        <div class="columns">
+            <div class="column is-4">
+                <h4 class="title is-5">Objetivo: Viaje</h4>
+                <progress class="progress" value="50" max="100">50%</progress>
+            </div>
+            <div class="column is-4">
+                <h4 class="title is-5">Objetivo: Fondo de Emergencia</h4>
+                <progress class="progress" value="30" max="100">30%</progress>
+            </div>
+            <div class="column is-4">
+                <h4 class="title is-5">Objetivo: Nuevo Auto</h4>
+                <progress class="progress" value="10" max="100">10%</progress>
+            </div>
+        </div>
+
+        <!-- Transacciones recientes -->
+            <table class="table is-fullwidth is-striped">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Categoría</th>
+          <th>Subcategoría</th>
+          <th>Tipo</th>
+          <th>Cantidad</th>
+          <th>Descripción</th>
+          <th>Acciones</th> <!-- Nueva columna para las acciones -->
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for transaccion in transacciones %}
+          <tr>
+            <td>{{ transaccion.fecha|date:"d M Y" }}</td>
+            <td>{{ transaccion.categoria.nombre }}</td>
+            <td>{{ transaccion.subcategoria.nombre|default:"N/A" }}</td>
+            <td>{{ transaccion.tipo }}</td>
+            <td>R$ {{ transaccion.cantidad|floatformat:2 }}</td>
+            <td>{{ transaccion.descripcion|default:"Sin descripción" }}</td>
+             <td>
+              <form action="{% url 'eliminar_gasto' transaccion.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="button is-danger is-small">Eliminar</button>
+              </form>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="6">No hay transacciones registradas</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</section>
+
+<!-- Tooltip -->
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+  const gastosData = {
+        labels: ["Alimentos", "Transporte", "Entretenimiento", "Otros"],
+        datasets: [{
+            data: [3500, 1400, 980, 750],
+            backgroundColor: [
+                "rgba(255, 99, 132, 0.7)",
+                "rgba(54, 162, 235, 0.7)",
+                "rgba(255, 206, 86, 0.7)",
+                "rgba(75, 192, 192, 0.7)"
+            ],
+            hoverOffset: 4
+        }]
+    };
+
+    const gastosConfig = {
+        type: 'doughnut',
+        data: gastosData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false, // Permite que el gráfico use el espacio completo
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Distribución de Gastos'
+                }
+            }
+        }
+    };
+
+    const gastosChart = new Chart(
+        document.getElementById('gastosChart'),
+        gastosConfig
+    );
+
+    const gastosMensualesData = {
+        labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio"],
+        datasets: [{
+            label: "Gastos",
+            data: [1000, 1200, 900, 1100, 1300, 1000],
+            backgroundColor: 'rgba(0, 209, 178, 0.7)',
+            borderColor: 'rgba(0, 209, 178, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    const config = {
+        type: 'bar',
+        data: gastosMensualesData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false, // Permite que el gráfico use el espacio completo
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: ''
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: ''
+                    }
+                }
+            }
+        }
+    };
+
+    const gastosMensualesChart = new Chart(
+        document.getElementById('gastosMensualesChart'),
+        config
+    );
+</script>
+
+</body>
+</html>

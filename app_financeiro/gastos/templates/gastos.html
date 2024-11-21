@@ -1,0 +1,103 @@
+
+<!-- crear_transaccion.html -->
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="title">{{ title }}</h1>
+        <form action="{% url 'gastos' %}" method="POST">
+            {% csrf_token %}
+            <div class="">
+		        <div class="columns spacing">
+                    <div class="column">
+                        <label class="label" for="id_categoria">Categoría:</label>
+
+                        {{ form.categoria }}
+                    </div>
+                    <div class="column">
+                        <label class="label" for="id_subcategoria">SubCategoría:</label>
+
+                        {{ form.subcategoria }}                    
+                    </div>
+		                
+
+		            {% if form.categoria.errors %}
+		                <p class="help is-danger">{{ form.categoria.errors }}</p>
+		            {% endif %}
+            	</div>
+
+            </div>
+
+            <div class="field">
+                
+            </div>
+
+            <div class="field ">
+                <label class="label" for="id_cantidad">Cantidad:</label>
+                {{ form.cantidad }}
+                {% if form.cantidad.errors %}
+                    <p class="help is-danger">{{ form.cantidad.errors }}</p>
+                {% endif %}
+            </div>
+
+            <div class="field">
+                <label class="label" for="id_tipo">Tipo:</label>
+                {{ form.tipo }}
+                {% if form.tipo.errors %}
+                    <p class="help is-danger">{{ form.tipo.errors }}</p>
+                {% endif %}
+            </div>
+
+            <div class="field">
+                <label class="label" for="id_descripcion">Descripción:</label>
+                {{ form.descripcion }}
+                {% if form.descripcion.errors %}
+                    <p class="help is-danger">{{ form.descripcion.errors }}</p>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="button is-primary">Guardar Transacción</button>
+        </form>
+    </div>
+
+<script>
+   
+    document.getElementById('categoria-select').addEventListener('change', function() {
+        const categoriaId = this.value;
+        const subcategoriaSelect = document.getElementById('subcategoria-select');
+
+        // Limpiar las subcategorías existentes
+        subcategoriaSelect.innerHTML = '<option value="">Seleccione una subcategoría</option>'; // Opción por defecto
+
+        if (categoriaId) {
+            fetch(`/api/subcategorias/${categoriaId}/`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}` // Ajusta según tu método de autenticación
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la red'); // Manejo básico de errores
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Acceder a la lista de subcategorías
+                data.subcategorias.forEach(subcategoria => {
+                    const option = document.createElement('option');
+                    option.value = subcategoria.id; // Asignar el ID de la subcategoría
+                    option.textContent = subcategoria.nombre; // Asignar el nombre de la subcategoría
+                    subcategoriaSelect.appendChild(option); // Agregar la opción al select
+                });
+            })
+            .catch(error => {
+                console.error('Hubo un problema con la solicitud fetch:', error);
+                // Puedes mostrar un mensaje al usuario si lo deseas
+            });
+        }
+    });
+</script>
+
+{% endblock %}

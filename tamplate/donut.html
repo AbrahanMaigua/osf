@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Gastos Mensuales</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <style>
+        .chart-container {
+            margin: 50px auto;
+            width: 80%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+
+<section class="section">
+    <div class="container">
+        <h1 class="title">Gastos Mensuales</h1>
+        <div class="chart-container">
+            <canvas id="gastosMensualesChart"></canvas>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Datos de los gastos mensuales
+    const gastosMensualesData = {
+        labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio"],
+        datasets: [{
+            label: "Gastos",
+            data: [1000, 1200, 900, 1100, 1300, 1000],
+            backgroundColor: 'rgba(0, 209, 178, 0.7)',
+            borderColor: 'rgba(0, 209, 178, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    // Configuración del gráfico
+    const config = {
+        type: 'bar',
+        data: gastosMensualesData,
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Monto (en $)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Mes'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return `${tooltipItem.dataset.label}: $${tooltipItem.raw}`;
+                        }
+                    }
+                },
+                datalabels: {
+                    anchor: 'end',
+                    align: 'end',
+                    formatter: (value) => {
+                        return `$${value}`; // Formato del valor
+                    },
+                    color: '#000', // Color del texto
+                    font: {
+                        weight: 'bold',
+                    }
+                }
+            }
+        }
+    };
+
+    // Crear el gráfico
+    const gastosMensualesChart = new Chart(
+        document.getElementById('gastosMensualesChart'),
+        config
+    );
+</script>
+
+</body>
+</html>

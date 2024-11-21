@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+<section class="hero is-fullheight">
+    <div class="hero-body">
+        <div class="container ">
+            <h1 class="title has-text-centered">{{ title }}</h1>
+            
+            <form method="post">
+                {% csrf_token %}
+                <div class="field">
+                    <label class="label">Nombre de Usuario</label>
+                    <div class="control">
+                        <input class="input" type="text" name="username" required placeholder="Ingresa tu nombre de usuario">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Contraseña</label>
+                    <div class="control">
+                        <input class="input" type="password" name="password" required placeholder="Ingresa tu contraseña">
+                    </div>
+                </div>
+                <div class="field has-text-centered">
+                    <div class="control">
+                        <button class="button is-link">Iniciar Sesión</button>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}
+    <h1>{{ title }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Muestra el formulario -->
+        <button type="submit">Guardar Cambios</button>
+    </form>
+
+{% endblock %}

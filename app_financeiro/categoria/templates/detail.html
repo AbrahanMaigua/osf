@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+<section class="section">
+    <div class="container">
+        <h1 class="title claer">{{ title }}</h1>
+        <p  class="Sub ">Presupuesto: <strong>{{ presupuesto }}</strong></p>
+
+        <span  class="Sub ">Gasto:       <span class="spacing has-text-danger" >{{ gasto }}</spam></span>
+         <!-- Línea vertical -->
+        <div class="vertical-line"></div>
+
+        <p>dinero disponible:
+            {% if total_gasto > presupuesto  %}
+                <span id="ingreso_total" class="has-text-danger">{{ total_gasto }}</span>
+            {% else %}
+                <span class="has-text-success" id="ingreso_total">{{ total_gasto }}</span>
+            {% endif %}
+        </p>
+        <div class="field is-grouped is-grouped-centered">
+            <span class="tag is-info">{{ fecha__gte }}</span>
+            <span>desde hasta</span>
+            <span class="tag is-info">{{ fecha__lte }}</span> 
+            
+        </div>
+        <div class="field is-flex is-justify-content-space-between">
+            <h2 class="title is-4 mt-4">Subcategorías</h2>
+            <h2 class="title is-4 mt-4">Total Gasto</h2>
+        </div>
+        <ul class="list">
+            {% for categoria, total in Transaccion.items %}
+                <li class="box">
+                    <div class="field is-flex is-justify-content-space-between">
+                        <span>{{ categoria }}</span>
+                        <span>{{ total }}</span> 
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+
+<style type="text/css">
+    .Sub{
+         font-size: 20px;
+    }
+    .spacing{
+        margin-left: 51px ;
+
+    }
+    .vertical-line {
+        width: 1px;              /* Grosor de la línea */
+        background-color: #ddd;  /* Color de la línea */
+        height: 100%;            /* Alto de la línea */
+        margin: 0 1rem;          /* Espacio a los lados de la línea */
+    }
+
+</style>
+{% endblock %}

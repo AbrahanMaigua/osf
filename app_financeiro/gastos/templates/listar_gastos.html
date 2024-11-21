@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Historial de Transacciones{% endblock %}
+
+{% block content %}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/f2cbf537ed.js" crossorigin="anonymous"></script>
+  <section class="container">
+    <div class="spacing-top">
+      <h2 class="title is-4 spacing-margin">Detalle de Transacciones</h2>
+      <a class="button " href="{% url 'gastos'  %}">crear una transacion</a>
+
+      
+    </div>
+
+    <table class="table is-fullwidth is-striped">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Categoría</th>
+          <th>Subcategoría</th>
+          <th>Tipo</th>
+          <th>Cantidad</th>
+          <th>Descripción</th>
+          <th>Acciones</th> <!-- Nueva columna para las acciones -->
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for transaccion in transacciones %}
+          <tr>
+            <td>{{ transaccion.fecha|date:"d M Y" }}</td>
+            <td>{{ transaccion.categoria.nombre }}</td>
+            <td>{{ transaccion.subcategoria.nombre|default:"N/A" }}</td>
+            <td>{{ transaccion.tipo }}</td>
+            <td>R$ {{ transaccion.cantidad|floatformat:2 }}</td>
+            <td>{{ transaccion.descripcion|default:"Sin descripción" }}</td>
+             <td>
+              <div  style="display:inline;">
+                {% csrf_token %}
+                <div class="acciones">
+                    <a href="{% url 'ver_detalles_transaccion' transaccion.id %}" class="a -info">
+                        <i class="fas fa-eye"></i> 
+                    </a>
+                    <a href="{% url 'editar_transaccion' transaccion.id %}" class="a -warning">
+                        <i class="fas fa-edit"></i> 
+                    </a>
+                    <a  href="{% url 'eliminar_gasto' transaccion.id %}" class=" -danger">
+                        <i class="fas fa-trash-alt"></i> 
+                    </a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="6">No hay transacciones registradas</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+
+    <style type="text/css">
+    .spacing-top{
+      padding: 19px 11px;
+      display: inline-flex;
+    }
+
+    .spacing-margin{
+      margin: 15px 10px;
+    }
+    </style>
+{% endblock %}

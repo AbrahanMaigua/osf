@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Presupuesto Mensual y Categorías{% endblock %}
+
+{% block content %}
+
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Presupuesto Mensual por Categorías</h1>
+            <p class="subtitle">Asigna presupuestos y verifica tu presupuesto restante según tus ingresos.</p>
+
+            <form method="POST" onsubmit="return validarPresupuesto();">
+                {% csrf_token %}
+                                <ul>
+                    <li><strong>Ingreso Total del mes:</strong>
+                                {% if ingreso_total < ingreso_disponible  %}
+                                    <span id="ingreso_total" class="has-text-danger">${{ ingreso_total }}</span>
+                                {% else %}
+                                    <span class="has-text-success" id="ingreso_total">${{ ingreso_total }}</span>
+                                {% endif %} 
+
+                    </li>
+                    <li><strong>Ingreso Disponible Después de Gastos:</strong>
+                                {% if ingreso_total < ingreso_disponible  %}$ 
+                                    <span class="has-text-danger" id="disponible" >{{ ingreso_disponible }}</span>
+                                {% else %}
+                                    $ <span class="has-text-success" id="disponible">{{ ingreso_disponible }}</span>
+                                {% endif %} </li>
+
+                </ul>
+
+                <!-- Mensaje de error -->
+                <div  id="mensaje_error_container" class="notification is-hidden">
+                    <p id="mensaje_error" class="has-text-danger" ></p>
+                </div>
+
+
+
+                <table class="table is-fullwidth is-striped">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Presupuesto Mensual</th>
+                            <th>Gasto (Últimos 30 Días)</th>
+                            <th>Presupuesto Restante</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in categorias_presupuesto %}
+                        <tr>
+                            <td>{{ item.categoria.nombre }}</td>
+                            <td>
+                                <input class="input" type="number" name="presupuesto_{{ item.categoria.id }}" step="0.01" value="{{ item.categoria.presupuesto_mensual }}" required>
+                            </td>
+                            <td>${{ item.total_gastos }}</td>
+                            <td>
+                                {% if item.presupuesto_restante < 0  %}
+                                    <span id="ingreso_total" class="has-text-danger">${{ item.presupuesto_restante }}</span>
+                                {% else %}
+                                    <span class="has-text-success" id="ingreso_total">${{ item.presupuesto_restante }}</span>
+                                {% endif %} 
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <div class="field">
+                    <div class="control">
+                        <button type="submit" id='btn-1' class="button is-primary">Guardar Cambios</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+   {% load static %}
+
+   <script src="{% static 'js/presupuesto.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <h1 class="title">{{ title }}</h1>
+      <form method="post">
+        {% csrf_token %}
+        
+        <div class="field">
+          <label class="label">Email *</label>
+          <div class="control">
+            {{ form.email }}  <!-- Campo de entrada -->
+            {{ form.email.errors }}  <!-- Mensajes de error -->
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Nombre de Usuario *</label>
+          <div class="control">
+            {{ form.username }}  <!-- Campo de entrada -->
+            {{ form.username.errors }}  <!-- Mensajes de error -->
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Contraseña*</label>
+          <div class="control">
+            {{ form.password1 }}
+            {{ form.password1.errors }}
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Confirmar Contraseña*</label>
+          <div class="control">
+            {{ form.password2 }}
+            {{ form.password2.errors }}
+          </div>
+        </div>
+
+        <!-- Campos adicionales del formulario personalizado -->
+        <div class="field">
+          <label class="label">Nombre Completo (opcional)</label>
+          <div class="control">
+            {{ form.nombre_completo }}
+            {{ form.nombre_completo.errors }}
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Teléfono (opcional)</label>
+          <div class="control">
+            {{ form.telefono }}
+            {{ form.telefono.errors }}
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Fecha de Nacimiento (opcional)</label>
+          <div class="control">
+            {{ form.fecha_nacimiento }}
+            {{ form.fecha_nacimiento.errors }}
+          </div>
+        </div>
+
+
+        <div class="field">
+          <label class="label">Configuración de Privacidad y Almacenamiento de Datos *</label>
+          <div class="control">
+            {{ form.consentimiento_datos }}
+            <span>Acepto que mis datos sean almacenados según las <a href="{% url 'politica_privacidad' %}">políticas de privacidad</a>.</span>
+             <p></p>
+
+            {{ form.consentimiento_datos.errors }}
+             {{ form.configuracion_privacidad }}
+            <span>Acepto haber leído las <a href="{% url 'politica_privacidad' %}">políticas de privacidad</a>.</span>
+            {{ form.configuracion_privacidad.errors }}
+          </div>
+        </div>
+
+        <!-- Y así para los demás campos personalizados -->
+
+        <div class="control">
+          <button class="button is-primary" type="submit">Registrarse</button>
+        </div>
+      </form>
+    </div>
+  </section>
+{% endblock %}

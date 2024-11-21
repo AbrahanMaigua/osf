@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %} {{ title }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+<p>Total de gastos en esta categoría: {{ total_gastos_categoria }}</p>
+
+<h2>Subcategorías</h2>
+<ul>
+    
+    {% for item in subcategorias %}
+        <li>
+            <strong>{{ item.subcategorias.nombre }}</strong>: 
+            {{ item.total_gastos }} gastos
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
