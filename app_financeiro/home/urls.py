@@ -22,11 +22,7 @@ from home.views import *
 
 urlpatterns = [
     path('',home, name='home'),
-
     path('politica-privacidad/',politica_privacidad, name='politica_privacidad'),
-
-
-
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
