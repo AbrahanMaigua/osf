@@ -1,4 +1,4 @@
-** Descripción de la Web App de Finanzas **
+**Descripción de la Web App de Finanzas**
 
 Nuestra aplicación de finanzas está diseñada para facilitar la gestión de tus ingresos, gastos y metas financieras a través de una plataforma sencilla y eficiente. Con nuestro modelo SaaS, puedes acceder a todas las funciones desde cualquier dispositivo conectado, lo que te permite controlar tus finanzas en todo momento. 
 
