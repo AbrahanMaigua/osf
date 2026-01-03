@@ -7,3 +7,5 @@ cryptography==43.0.3
 django-environ
 djangorestframework
 django-cors-headers
+gunicorn
+psycopg2-binary

@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: finance_db
+      POSTGRES_USER: finance_user
+      POSTGRES_PASSWORD: finance_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    command: /app/entrypoint.sh
+    volumes:
+      - ./:/app:rw
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=0
+      - SECRET_KEY=changeme
+      - ENCRYPTION_KEY=mE3ssbdiY156sI_Xcd5QOfhpWQ7bpmwUo3nyp48LnVE=
+      - DATABASE_HOST=db
+      - DATABASE_NAME=finance_db
+      - DATABASE_USER=finance_user
+      - DATABASE_PASSWORD=finance_pass
+      - DATABASE_PORT=5432
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
